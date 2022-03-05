@@ -1,4 +1,5 @@
 # 1-list comprehension\列表的元素可以在一行中循环遍历
+% % time
 numbers = [1, 2, 3, 4, 5, 6, 7, 8]
 even_Numbers = [number for number in numbers if number % 2 == 0]
 print(even_Numbers)
@@ -246,7 +247,7 @@ print(f'After division:{list(quotient)}')
 value = 'OIDUTS ataD'
 print('Reverse is:', value[::-1])
 
-# 29 代码块的执行实践
+# 29 代码块的执行实践 只可以在jupyter中运行，在pycharm中没法运行
 % % time
 sentence = 'Data STUDIO'
 changed_sen = sentence.swapcase()
@@ -262,3 +263,69 @@ print('After applying rstrip:', sentence3.rstrip('.,blg'))
 # 31在元组或列表中查找元素的索引
 cities_tuple = ('Berlin', 'Paris', 5, 'Vienna', 10)
 print(cities_tuple.index('Paris'))
+cities_list = ['Vienna', 'Paris', 'Seoul', 'Amsterdam']
+print(cities_list.index('A'))
+
+# 32 清空列表或集合中的元素
+cities_list = ['Vienna', 'Paris', 'Seoul', 'Amsterdam']
+print(f'Before removing from the list:{cities_list}')
+cities_list.clear()
+print(f'After removing from the list:{cities_list}')
+cities_set = {'Vienna', 'Paris', 'Seoul', 'Amsterdam'}
+print(f'Before removing from the set :{cities_set}')
+cities_set.clear()
+print(f'After removing from the set:{cities_set}')
+
+# 33 连接两个集合
+set1 = {'Vienna', 'Paris', 'Seoul'}
+set2 = {'Tokyo', 'Rome', 'Amsterdam'}
+print(set1.union(set2))
+
+# 34根据频率对列表的值排序
+from collections import Counter
+
+count = Counter([7, 6, 5, 6, 8, 6, 6, 6])
+print(count)
+print('根据频率对值排序：', count.most_common())
+
+# 35从列表中删除重复值
+cities_list = ['Vienna', 'Paris', 'Seoul', 'Amsterdam', 'Paris', 'Amsterdam', 'Paris']
+cities_list = set(cities_list)
+print('从列表中删除重复值后：', list(cities_list))
+
+# 36 列表中元素连接为句子
+words_list = ['数据', 'STUDIO', "云朵君"]
+print(" ".join(words_list))
+
+
+# 37 一次从函数返回多少个值
+def calculation(number):
+    mul = number * 2
+    div = number / 2
+    summation = number + 2
+    subtract = number - 2
+    return mul, div, summation, subtract
+
+
+mul, div, summation, subtract = calculation(10)
+print('乘法：', mul)
+print('除法：', div)
+print('加法：', summation)
+print('减法：', subtract)
+
+# 38 找出两个列表之间的差异
+cities_list1 = ['Vienna', 'Paris', 'Seoul', 'Amsterdam', 'Berlin', 'Londom']
+cities_list2 = ['Vienna', 'Paris', 'Seoul', 'Amsterdam']
+cities_set1 = set(cities_list1)
+cities_set2 = set(cities_list2)
+difference = list(cities_set1.symmetric_difference(cities_set2))
+print(difference)
+
+# 39将两个列表合并成为一个字典
+number = [1, 2, 3]
+cities = ['维也纳', '巴黎', '首尔']
+result = dict(zip(number, cities))
+print(result)
+
+# 40 字符串格式化
+print('i am {0},age{1}'.format('tom', 18))
