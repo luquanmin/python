@@ -126,3 +126,4 @@ print(data2.loc[2, 'c'])
 print(type(data2.loc[2, 'c']))
 
 print(data2.loc[2, 'c'].shape)
+😆

@@ -329,3 +329,4 @@ print(result)
 
 # 40 字符串格式化
 print('i am {0},age{1}'.format('tom', 18))
+
