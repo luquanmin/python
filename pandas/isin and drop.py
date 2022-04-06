@@ -15,11 +15,12 @@ dta5 = list(data[data['A'].isin([4, 8])].index)
 
 # 二、drop函数（DataFrame删除指定行列）
 # 1、drop(labels=None, axis=0, index=None, columns=None, level=None, inplace=false, errors='raise'):
-# 1、labels:一个字符或数值，加上axis，表示带label标识的行或者列；如（labels='A', axis=1）表示A列
-# 2、axis:axis=0表示行，axis=1表示列
-# 3、columns：表示列名
-# 4、index：表示dataframe的index，如index=1， index=a
-# inplace：True表示删除某行后原DataFrame变化，False不改变原来的DataFrame
+# 2、labels:一个字符或数值，加上axis，表示带label标识的行或者列；如（labels='A', axis=1）表示A列
+# 3、axis:axis=0表示行，axis=1表示列
+# 4、columns：表示列名
+# 5、index：表示dataframe的index，如index=1， index=a
+# 6、inplace：True表示删除某行后原DataFrame变化，False不改变原来的DataFrame
+# 7、针对有第2级行标或列标的集合；level = 1:表示按第2级行删除整行； leve=0：默认取0，表示按照第一级航标删除整行；
 
 # 1、drop行数删除行
 # 1.1、drop函数基于index和columns删除行
@@ -57,8 +58,24 @@ data11 = data.drop(labels='A', axis=1)  # 删除列名为A的列
 # 3.2  index或columns直接指定要删除的行或列
 # 3.3  index和columns可以直接带标签，也可以用[]的方法，但是表示列时一定要带轴。
 
+midx = pd.MultiIndex(levels=[['speed', 'cow', 'falcon'],
+                             ['speed', 'weight', 'length']],
+                     codes=[[0, 0, 0, 1, 1, 1, 2, 2, 2],
+                            [0, 1, 2, 0, 1, 2, 0, 1, 2]])
+
+df = pd.DataFrame(index=midx, columns=['big', 'small'],
+                  data=[[45, 30], [200, 100], [1.5, 1], [30, 20],
+                        [250, 150], [1.5, 0.8], [320, 250],
+                        [1, 0.8], [0.3, 0.2]])
+
+df1 = df.drop(index='cow', columns='small')
+
+df2 = df.drop(index='speed', level=1)
+
+df3 = df.drop(index='speed')
 
 print(data, '\n')
-print(data10)
-print(data40)
-# print(data10)
+print(df)
+print(df1)
+print(df2)
+print(df3)
